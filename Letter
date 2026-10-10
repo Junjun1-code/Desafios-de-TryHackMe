@@ -1,0 +1,10 @@
+Desafio tryhackme
+Letter
+
+1a) Nos otorgaron un archivo "Letter-1776(...).zip", vemos su contenido con (unzip -l "archivo"), se encuentran archivos .png y .txt en su interior. Algunos de estos se encuentran "ocultos".
+1.b) Investigando en los archivos, se encuentra que la nota esta en un idioma desconocido, dirigida a un tal "Le benjamin del' equipe" y de remitente "Audette", mientras que en la imagen de la carta, se muestra un nombre "Eduard G. SNSM" y tambien se encuentra que el país es "France"/"Francia". La carta esta visualmente dañada con rastros de tinta.
+1.c) Traduciendo el contenido de la carta, me di cuenta que "Le benjamin del' equipe" no se trata de un nombre, sino de una expresión para representar a alguien joven de familia. También descubrí que la carta se trata de como un familiar se encontro con el recorte de periodico (ingresado en la carta) en el que fueron afectados, y que el bisabuelo en el momento del suceso tenia supuestamente menos de 17 años (menor de edad para conseguir su permiso de conducir). Audette (el remitente de la carta) posiblemente quiere reunirse con el receptor (Eduardo) ["quiere verlo en el agua"].
+1.d) Buscando el titular de la noticia (L'Ouest-Eclair) se encuentra que es una noticia publicada en francia desde 2 de agosto de 1899 a 1 de agosto de 1944, basada en Rennes.
+1.e) Buscando la forma en que se realizan los codigos postales en francia, se obtiene que los primeros 2 digitos toman el numero de departamento administrativo, el de Rennes es de 35000-35200-35700 (Centro, Sur/sureste, Norte/noreste) y los ultimos 3 son de la ubicación según la ciudad.
+
+2.a) Investigando sobre el nombre del receptor, se encuentra que un apodo similar se encuentra vinculado a la noticia: Ed Gein (abreviacion de Edward G. en la carta), un criminal y asesino que vivio 77 años. Su nombre completo es Edward Theodore Gein

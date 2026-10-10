@@ -1,0 +1,26 @@
+TryHackMe
+Desafio "Digital Footprint"
+
+1) Nos otorgaron una imagen de una residencia, nuestro objetivo es descubrir de donde se saco la foto.
+1.a) Encontre en la imagen un nombre "The Rectory", sin embargo se trata del nombre de la residencia, verifique propiedades del archivo, pero no encontre ningun dato relevante. Se descarta la posiblidad de obtener los datos dentro del contenido de la imagen con textos dentro de esta.
+1.b)La imagen revela suficiente informacion de sus exteriores: sombras, tipos de arboles, arquitectura, y tambien se puede encontrar en letra blanca en uno de los pilares de la entrada, el año en que se saco (2018°google), permitiendonos realizar un analisis de tipo OSINT
+----------
+1.c1) Use una app para realizar una geolocalización (Oceanir) usando la imagen como base, obteniendo una aproximación: Cape Winelands, South Africa. Fue erronea la respuesta, probablemente debido a lo antigua que es la foto.
+----------
+1.c2) Utilice una herramienta para escanear metadatos (exiftool) de una imagen, encontre la categoria GPS, revelandome las coordenadas de donde se obtuvo la imagen: 26 deg 12' 14.76", 28 deg 2' 50.28"
+1.d) Busque en el mapa en base a las coordenadas, primero probe con 26°07'17.3"N 28°15'01.0"E, lo cual me llevo en medio de la nada en egipto, por lo que probe esta vez con 26°07'17.3"S 28°15'01.0"E, llevandome una ciudad de sudafrica: Johannesburg
+
+2.a) Segun los datos del ejercicio, la fundacion ACME fue fundada en 2025, nos dieron su página de donde la obtuvieron (warc-acme.com/jef/), sin embargo al intentar buscarla por la web, no encontre ningun resultado, y su dominio directo tampoco funciono.
+2.b) Me diregi a la pagina web que archiva todo para evitar su perdida: (archive.org), al ingresar el link, encontre una página archivada, la cual representa un archivo/carpeta de la empresa, inspeccionando sus datos obtuve que el archivo fue agregado el (2016-02-13 00:40:30) y agregado por primera vez con los valores de tiempo (20160210224602), contradiciendo por completo la historia.
+
+3.a) Nos otorgaron una nueva imagen, esta vez con el objetivo de obtener datos de la estructura que se muestra con ayuda de información dentro de la imagen. Leyendo los carteles de la imagen, se obtuvieron palabras claves: ("DublinOne", "Apples&Oranges&Lyches&Okra") con otro cartel al frente, que dice ("At the [heart] of the city" y en texto pequeño "Dublin-One.io"), haciendo que DublinOne sea el principal candidato del posible nombre del edificio principal.
+3.b) Al investigar el nombre, se obtuvo que no se trata del nombre del edificio central, sino una empresa de alojamientos, lo cual puede ser relevante para obtener la ubicación del area donde se saco la foto.
+3.c) Investigando la imagen de fondo del perfil de Dublin One, se encontro la misma imagen utilizada en el ejercicio [sin ser recortada], verificando por completo la informacion obtenida hasta el momento, en sus datos de perfil se obtiene que la empresa se ubica en "Dublin City, Ireland".
+3.d) Buscando estructuras relevantes de (Dublin, Ireland), se encontro "El spire de Dublín (monumento de la luz)", el cual coincide con la estructura de la imagen. En ingles es llamado "Spire of Dublin" o "The Spire".
+3.e) Al investigar en un mapa la ubicacion de "The Spire", se encontro "General Post Office" en los alrededores de la estructura historica, a su derecha, convirtiendola en el candidato para la respuesta del ejercicio.
+
+4.a) Nos otorgaron un archivo de tipo (.odt), investigue el tipo de archivo y descubri que se trata de un archivo de LibreOffice Writer, lo ejecutamos en la terminal para leerlo con ayuda del programa
+4.b) El contenido del documento no tiene mucha información relevante, se trata de una carta de Mark que indica que estuvo realizando el equipo de desarrollo y que pronto publicara un video con los cambios.
+4.c) Se leen los archivos internos del .odt con unzip -l [archivo], al ejecutar el comando se encuentran las posibles rutas del archivo.
+4.d) Extraemos el contenido del archivo con (unzip -p [archivo] [ruta] |xmllint --format -), Al leer el "meta.xml" se encontro el nombre de usuario interno: markwilliams7243
+4.e) Investigando en la web, se encontro su youtube mark williams. En su documento se indico que iba a subir un video, al investigar su canal, lo unico que se encontraba es una publicación, al final de la publicación se encuentra la informacion necesaria para finalizar el ejercicio.
